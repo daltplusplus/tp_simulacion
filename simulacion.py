@@ -14,10 +14,10 @@ ia = 0
 
 #variables de control
 m = 10 #normales
-n = 10 # prioritarias
+n = 6 #prioritarias
 
 #auxiliares
-tf = 60*60*1*1
+tf = 60*60*24
 t = 0
 i_tpsa = 0
 i_tpsb = 0
@@ -48,7 +48,7 @@ def calcular_ia():
     return 4*r +1
 
 def calcular_taa():
-    m = 40
+    m = 3/50
     while True:
         r1 = random.random()
         r2 = random.random()
@@ -60,13 +60,13 @@ def calcular_taa():
     return x1
 
 def calcular_tab():
-    m = 300
+    m = 1/135
     while True:
         r1 = random.random()
         r2 = random.random()
         x1 = 120+(300-120)*r1
         y1 = m*r2
-        if y1 <= (1/48600)*x1+1/801:
+        if y1 <= (1/48600)*x1+1/810:
             break
     
     return x1
@@ -168,11 +168,13 @@ def imprimir_resultados():
     print("stab: " + str(stab))
     print("nta: " + str(nta))
     print("ntb: " + str(ntb))
+    print("nt: " + str(nt))
    
     print("---RESULTADOS---")
     print("PPS    = " + str(pss) + " segundos")
     print("PEC A  = " + str(peca) + " segundos")
     print("PEC B  = " + str(pecb) +  " segundos")
+    
     
     for k in range(n):
         stoa[k] += t - itoa[k]
